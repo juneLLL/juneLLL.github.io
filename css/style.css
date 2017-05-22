@@ -370,18 +370,19 @@ header {
       color: #666; }
   .archive .archive_item {
     color: #555555;
-    width: 80%;
-    padding: 20px 0;
+    width: 50%;
+    padding: 15px 0;
+
+    text-align:left;
     border-bottom: 1px solid #ccc; }
     .archive .archive_item .title {
+          margin-left: 50px;
       color: inherit;
       text-decoration: none;
       transition: color ease .2s; }
       .archive .archive_item .title:hover {
         color: #204264; }
-    .archive .archive_item .date {
-      float: right; }
-
+    
 .tags {
   width: 100%;
   display: flex;
