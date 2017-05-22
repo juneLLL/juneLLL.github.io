@@ -80,12 +80,13 @@ header {
   z-index: 99999; }
   header .banner {
     position: absolute;
-    left: 20px;
-    top: 18px;
-    font-weight: 800; }
-    header .banner a {
-      color: #fff;
-      text-decoration: none; }
+    left: 0;
+    top: 0;
+  height: 50px;
+width: 50px;}
+  header .banner img{
+  height: 50px;
+width: 50px;}
   header .menu {
     position: absolute;
     display: none;
