@@ -10,48 +10,445 @@
     <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
-    <header>
-    <span class="banner"><img src="/img/timg.jpg" alt="ePSXe"></span>
+    <header><div>
+    <span class="banner"><img src="/img/yyt.png" alt="ePSXe"></span>
     <span class="menu">Menu</span>
     <ul class="menu_list hide">
         
-            <li><a href="/" >Home</a></li>
+            <li><a href="/" >首页</a></li>
         
-            <li><a href="/archives" >Index</a></li>
+            <li><a href="/archives" >客户</a></li>
         
-            <li><a href="/tags" >Appendix</a></li>
+            <li><a href="/tags" >常见问题</a></li>
         
-    </ul>
+            <li><a href="/about" >关于我们</a></li>
+        
+    </ul></div><br><br><br><br><br>
+        <hr style="width: 100%;height: 1px;position:fixed;top:92px;">
 </header>
+
     <div class="main">
-        <div style="padding-left: 10%,padding-right:10%" >
+        <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">$(function(){
+    
+    var i,left,right,box,boxli,boxleng,width,dot,first,last,IsAuto;
+    
+    i = 0; 
+    
+    left = $(".Homeleft"); 
+    
+    right = $(".Homeright");
+    
+    box = $(".Homebanner ul");
+    
+    boxli = $(".Homebanner li");
+    
+    dotbox = $(".Homedot");
+    
+    dot = $(".Homedot").find("a");
+    
+    width = boxli.width();
+    
+    boxleng = boxli.length;
+    
+    box.css({width:width*(boxleng)})
+    
+    boxli.css({width:width});
+    
+    dot.eq(0).addClass("cur");
+    
+    boxli.eq(0).addClass("cur");
+    
+    boxli.each(function(index) {
+       zindex = boxleng-(index+1);
+       $(this).css({"z-index":zindex})
+    });
+    
+    IsAuto = true;
+    
+    left.click(function(){
+        if(box.is(":animated")){return}
+        i--;
+        if(i<0){i=boxleng-1};
+        boxanimate();
+        
+    })
+    
+    right.click(function(){
+        if(box.is(":animated")){return}
+        i++;
+        boxanimate();
+    })
+    
+    function boxanimate(){
+        if(i>boxleng-1){i=0}        
+        boxli.addClass("cur1");
+        setTimeout(function(){
+            boxli.removeClass("cur1");
+            boxli.removeClass("cur").eq(i).addClass("cur");
+            boxli.stop().animate({opacity:0,"z-index":"1"},500).eq(i).stop().animate({opacity:1,"z-index":boxleng},500);
+            bannerdot(i)
+        },400)  
+    }
+    
+    function bannerdot(i){
+        if(i>boxleng-1){i=0}
+        dot.removeClass("cur").eq(i).addClass("cur");
+    }
+
+    dot.click(function(){
+        i = $(this).index();
+        bannerdot(i);
+        boxanimate(i);
+    })
+    
+    setInterval(function(){
+        if(IsAuto){
+            i++;
+            boxanimate();
+            bannerdot(i)
+        }
+    },6000)
+    
+    box.hover(function(){
+        IsAuto = false;
+    },function(){
+        IsAuto = true;
+    })
+    
+    dotbox.hover(function(){
+        IsAuto = false;
+    },function(){
+        IsAuto = true;
+    })
+    
+    left.hover(function(){
+        IsAuto = false;
+    },function(){
+        IsAuto = true;
+    })
+    
+    right.hover(function(){
+        IsAuto = false;
+    },function(){
+        IsAuto = true;
+    })
+    
+    
+    
+})</script>
 
 
-<div style="margin: 0% 20%;height:50px" >
-    <a href="http://www.epsxe.com/download.php"><div style="float: left"><img src="/img/1.png" width=50px height=50px style="vertical-align: middle;margin-right: 10px;"><img src="/img/1.png" width=50px height=50px style="vertical-align: middle;margin-right: 10px;"><img src="/img/1.png" width=50px height=50px style="vertical-align: middle;margin-right: 10px;"></div>
-    <div style="float: left;font-size:30px;margin-bottom: 20px;vertical-align: middle;font-family: '微软雅黑';">ePSXe Downloads</div></a>
-</div>
-<br>
-<hr style="height:10px;border:none;border-top:10px groove skyblue;margin: 0% 20% 15% 20%;" />
+<div class="bannerbox" style="width:100%;position:absolute;overflow:hidden;top:50px;">
 
-<div  style="text-align:center"><strong>==READ THIS==</strong></div>
-<br/><br/>
-<div style="margin: 0% 20%" >
-calb, Galtor and _Demo_ hold no warranties of any kind for this product.
-You're using ePSXe at your own risk. The authors can't be held liable
-or responsible for any damage which results from using the emulator,
-it's plugin or anything described in this documentation in any way.<br/><br/></div>
-<div style="text-align:center"><strong>==READ THIS==</strong></div>
+    <div class="Homebanner" style="width:100%;position:relative;height:600px;overflow:hidden;">
+        <ul style="width:100%;position:absolute;height:600px;">
+            <li class="Load cur" style="z-index:99">
+                <img src="img/banner2016.jpg" alt="">
+                <div class="Homebannertext">
+                    <img src="img/banner2016.png" class="bannereffect bannertime bigimg">
+                    <dl class="bannerone clearfix">
+                        <dt class="bannereffect bannertime1">
+                             轻松转文字做字幕
+                        </dt>
+                        <dd class="bannereffect bannertime2">
+                             专注您的核心工作吧，把耗时耗力的听写、对时间轴、翻译工作交给我们
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+            <li class="Load">
+                <img src="img/banner02.jpg" alt="">
+                <div class="Homebannertext">
+                    <img src="img/02.png" class="bannereffect bannertime bigimg">
+                    <dl class="bannertwo clearfix">
+                        <dt class="bannereffect bannertime1">
+                             <h3>视频分钟计价</h3>
+                             <p>录音转文字每分钟 5 元，中英字幕每分钟 6 元起，更多语言，按需购买，简单明了</p>
+                        </dt>
+                    </dl>
+                </div>
+            </li>
+            <li class="Load"><img src="img/03.jpg" alt="">
+                <div class="Homebannertext">
+                    <dl class="bannerthree clearfix">
+                        <dt class="bannereffect bannertime"><img src="img/03-1.png" alt=""></dt>
+                        <dd class="bannereffect bannertime1">
+                             <img src="img/03-2.png" alt="">
+                             <h3>专业团队和技术</h3>
+                             <p>经验丰富的制作人员,高效的技术实力,结合行业最佳实践,是我们对品质的承诺 服务品</p>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+        </ul>
+        <div class="Homeleft"><</div>
+        <div class="Homeright">></div>
+        <div class="Homedot"><a href="javascript:;" class="cur">1</a><a href="javascript:;">2</a><a href="javascript:;">3</a></div>
+    </div>
+    
+
+
+<br/><br/><br/><br/>
+<div class="introduce" style="text-align:center;color: red;font-size: 25px"><strong>客户和案例</strong></div>
+<br/>
+<div style="margin: 0% 30%;font-size: 20px" >
+多年来，我们为全球很多行业的客户提供转文字和做字幕服务，受到客户的广泛赞誉。
+
+无论是短短一分钟，还是每天数小时的音频或视频，我们都会全力以赴提供优质服务。<br/><br/></div>
+
 <br/><br/><br/><br/>
 
 
+<div class="play" style="height: 250px;margin: 0% 20%;">
+    
+    <div class="play1" style="float: left;width: 30%;  border:1px solid #e8e8e8;margin-right: 2%;height: 250px;">
+        <div class="video3" style="height: 185px;border:1px solid #e8e8e8;"> 
+            <div class="title" style="text-align: center;"> 
+            <div ><img src="/img/yk.png" style="height: 80px;width: 100%" ></div>
+
+            </div><!-- title结束 --> 
+            <div class="video_con" style="height:150px ;"> 
+                    <embed src='http://player.youku.com/player.php/sid/XMTI3Njg0MDMy/v.swf' allowFullScreen='true' quality='high' width='100%' height='150' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+                        
+                    </embed>
+            </div><!-- video_con结束 -->   
+        </div><!-- video3结束 -->
+        <div class="sidebar_ad" >    </div><!-- sidebar_ad结束 -->
+    </div><!-- play1结束 -->
+
+
+    <div class="play2" style="float: left;width: 30%;  border:1px solid #e8e8e8;margin-right: 2%;height: 250px;">
+        <div class="video3" style="height: 185px;border:1px solid #e8e8e8;"> 
+            <div class="title" style="text-align: center;"> 
+            <div ><img src="/img/jz.jpg" style="height: 80px;width: 100%" ></div>
+
+            </div><!-- title结束 --> 
+            <div class="video_con" style="height:150px ;"> 
+                    <embed src='http://player.youku.com/player.php/sid/XNTMwNTg4NjY4/v.swf' allowFullScreen='true' quality='high' width='100%' height='150' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'>
+                        
+                    </embed>
+
+            </div><!-- video_con结束 -->   
+        </div><!-- video3结束 -->
+        <div class="sidebar_ad" >    
+        </div><!-- sidebar_ad结束 -->
+    </div><!-- play2结束 -->
+
+
+
+    <div class="play3" style="float: left;width: 30%;  border:1px solid #e8e8e8;margin-right: 2%;height: 250px;">
+        <div class="video3" style="height: 185px;border:1px solid #e8e8e8;"> 
+            <div class="title" style="text-align: center;"> 
+            <div ><img src="/img/tx.png" style="height: 80px;width: 100%" ></div>
+
+            </div><!-- title结束 --> 
+            <div class="video_con" style="height:150px ;"> 
+                    <embed src='http://player.youku.com/player.php/sid/XMTc0NzE5MzM0MA==/v.swf' allowFullScreen='true' quality='high' width='100%' height='150' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>                       
+                    </embed>
+            </div><!-- video_con结束 -->   
+        </div><!-- video3结束 -->
+        <div class="sidebar_ad" >    
+        </div><!-- sidebar_ad结束 -->
+
+    </div><!-- play3结束 -->
+
+    <br/>
+    <br/>
+    <br/>
+
+</div>
+<!-- play 结束-->
+<br><br><br><br>
+<div class="down" style="background-image:url(/img/bg.jpg);background-repeat:repeat-x;height:600px"><br>
+        <div class="introduce" style="text-align:center;color: red;font-size: 25px"><strong>服务品质</strong></div>
+        <br/>
+        <div style="font-size: 20px;height: 200px;margin:0 20%; " >
+        立即购买我们的服务，告诉我们您的音频或视频链接和要求，剩下的由我们来做。
+        无论您的音频或视频是中文、英文、还是其他语言，我们都可以制作多种语言的字幕。
+        </div><!-- introduce结束 -->
+
+        <div class="box2" style=" height:200px;margin:0 20%;">
+            <div class="box1" style="margin-left:2.5%;float: left;height:200px;width:30%;
+        　　-moz-border-radius:8px;-webkit-border-radius:8px;border-radius: 8px;background-color:#ffffff;">
+             <br>
+            <div style="color: red;font-size: 40px;text-align:center;">99%</div><br>
+            <div style="font-size: 20px;text-align:center;">以上准确率</div><br>
+            <div style="height: 50px;width: 150px;background:red;margin-left:50px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius: 8px;margin-left: auto;margin-right: auto;"><div style="color:#ffffff;font-size: 25px;text-align: center;margin-top: padding-top:10px;  line-height:40px; ">中文音视频</div>
+            </div>
+        </div>
+           
+            <div class="box1" style="margin-left:2.5%;float: left;height:200px;width:30%;
+        　　-moz-border-radius:8px;-webkit-border-radius:8px;border-radius: 8px;background-color:#ffffff;">
+             <br>
+            <div style="color: red;font-size: 40px;text-align:center;">3天</div><br>
+            <div style="font-size: 20px;text-align:center;">或更快交付</div><br>
+            <div style="height: 50px;width: 150px;background:red;margin-left:50px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius: 8px;
+            margin-left: auto;margin-right: auto;"><div style="color:#ffffff;font-size: 25px;text-align: center;margin-top: padding-top:10px;  line-height:40px; ">外语音视频</div>
+            </div>
+        </div>
+
+            <div class="box1" style="margin-left:2.5%;float: left;height:200px;width:30%;
+        　　-moz-border-radius:8px;-webkit-border-radius:8px;border-radius: 8px;background-color:#ffffff;">
+             <br>
+            <div style="color: red;font-size: 40px;text-align:center;">一分钟</div><br>
+            <div style="font-size: 20px;text-align:center;">起即可订购</div><br>
+            <div style="height: 50px;width: 150px;background:red;margin-left:50px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius: 8px;
+            margin-left: auto;margin-right: auto;"><div style="color:#ffffff;font-size: 25px;text-align: center;margin-top: padding-top:10px;  line-height:40px; ">音视频后期</div>
+            </div>
+        </div>
+        </div><!-- box结束 -->
+</div><!-- down结束 -->
+
+
+<br><br><br>
+
+
+
+
+<div>   
+    <div class="introduce" style="text-align:center;color: red;font-size: 35px; "><strong>购买服务</strong></div>
+        <br/>
+        <div style="font-size: 20px;height: 200px;margin:0 20%;line-height: 30px " >
+        请按照音频或视频分钟数（不足一分钟按一分钟计算）购买转文字和做字幕服务。
+请在订单备注填写音视频文件共享链接和要求或通过电子邮件发送到 hi@zimu.tv。
+        </div>
+</div>
+
+
+<div class="buy" style="margin: 0 20%;height: 300px;">
+  <div style="width: 250px;margin-left:30px;float: left;">
+        <div class="img1" style="height: 80px;width: 200px;padding-top:50px;margin-left:25px "><img src="/img/yyt.png"></div>
+        <br><br>
+        <div class="tt1">
+        <div style="font-size: 15px;text-align: center;">中文音频和视频转文字或做字幕</div>
+        <div style="font-size: 25px;text-align: center;color: red;">¥5.00 - ¥80.00</div>
+        </div>
+  </div> 
+
+  <div style="width: 250px;margin-right:30px;float:right; ">
+        <div class="img1" style="height: 80px;width: 200px;padding-top:50px;margin-left:25px "><img src="/img/yyt.png"></div>
+        <br><br>
+        <div class="tt1">
+        <div style="font-size: 15px;text-align: center;">中文音频和视频转文字或做字幕</div>
+        <div style="font-size: 25px;text-align: center;color: red;">¥5.00 - ¥80.00</div>
+        </div>
+  </div> 
+
+</div>
+
+
+<hr style="margin:0 20%;height: 1px;color:#ccc;">
+
+<div style="margin:2% 20% 2% 20%;height:300px;">
+<div style="float: left;margin-right:7.5%;margin-left: 6.5% "><img src="/img/we.png" style="width: 30%height:50%"><div style="text-align: center;font-size: 20px">zimutv</div></div>
+<div style="float: left;margin-right:7.5%"><img src="/img/qq.png" style="width: 30%height:50%"><div style="text-align: center;font-size: 20px">2117586800</div></div>
+<div style="float: left;margin-right:7.5%"><img src="/img/email.png" style="width: 30%height:50%"><div style="text-align: center;font-size: 20px">hi@zimu.tv</div></div>
+<div style="float:left;"><img src="/img/p.png" style="width: 30%height:50%"><div style="text-align: center;font-size: 20px">010-5236.8058</div></div>
+<br>
+   
+
+ </div>
+
+
+
+<hr style="margin:0 20%;height: 1px;color:#ccc;">
+
+<br>   <br><br><br><br>
+
+
 
 
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
-    <footer>
-    <div class="info"><img src="/img/tel.jpg" style="margin-right: 10px" alt="TEL">Contact us:<span class="tel">123-456-7890</span></div>
+    <footer style="position:fixed;bottom:0px;">
+    <div class="info">
+    <div class="tel">© 2017 艾森思伟科技（北京）有限公司</div>
+    <div class="tel">《字幕台》 zimu.tv</div>
+    <div class="tel">京ICP备16033143号-5</div>
+    </div>
 </footer>
     <script src="/js/index.js"></script>
 </body>
